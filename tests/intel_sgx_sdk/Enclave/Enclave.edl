@@ -1,0 +1,88 @@
+enclave {
+
+    include "user_types.h" /* buffer_t */ 
+
+    trusted {
+
+        public void ecall_copy_information_error([out, count=cnt] int* ptr, unsigned cnt);
+        public void ecall_copy_information_ok([out, count=cnt] int* ptr, unsigned cnt);
+
+        public void ecall_copy_information_in_error([in, count=cnt] int* ptr, unsigned cnt);
+        public void ecall_copy_information_in_ok([in, count=cnt] int* ptr, unsigned cnt);
+
+        public void ecall_check_usercheck_error(int num, [user_check] int *ret);
+        public void ecall_check_usercheck_ok(int num, [out] int *ret);
+
+        public void ecall_check_usercheck1_error(uint64_t ret);
+        public void ecall_check_usercheck1_ok(uint64_t ret);
+
+
+        public void ecall_test_allocate_buffers_error();
+        public void ecall_test_allocate_buffers_ok();
+
+        public void ecall_test_echo_error();
+        public void ecall_test_echo_ok();
+
+        public void ecall_test_malloc1_error();
+        public void ecall_test_malloc2_error();
+        public void ecall_test_malloc3_error();
+        public void ecall_test_malloc4_ok();
+
+        public void ecall_test_malloc5_error();
+
+        public void ecall_test_malloc6_ok();
+
+        public void ecall_test_malloc7_error();
+
+        public void ecall_test_malloc8_error();
+
+        public void ecall_test_malloc9_error();
+
+        public void ecall_check_serialize_ok([in, count=size] char *buffer, size_t size);
+
+        public void ecall_check_serialize_error([in, count=size] char *buffer, size_t size);
+
+        public void ecall_check_function_id_error([user_check] int* id);
+
+        public void ecall_check_function_id_ok([user_check] int* id);
+
+        public void ecall_test_input_struct1_error([in] InputBuffer1* buf);
+
+        public void ecall_test_input_struct1_ok([in] InputBuffer1* buf);
+
+        public void ecall_test_input_union1_error([in] InputBuffer2* buf, size_t size);
+
+        public void ecall_test_input_union1_ok([in] InputBuffer2* buf, size_t size);
+
+        public void ecall_copy_information_global_error([in, count=cnt] int* ptr, unsigned cnt);
+
+        public void ecall_copy_information_global_ok([in, count=cnt] int* ptr, unsigned cnt);
+
+        public void ecall_copy_information_heap_error([in, count=cnt] int* ptr, unsigned cnt);
+
+        public void ecall_copy_information_heap_ok([in, count=cnt] int* ptr, unsigned cnt);
+
+        public void ecall_test_allocate_trusted_buffer_ok();
+
+        public void ecall_null_pointer_derefence_error();
+
+        public void ecall_null_pointer_derefence_ok();
+
+        public void ecall_test_validate_pointer_error();
+
+        public void ecall_test_pointers_in_buffers_error([user_check] uint64_t * buf, uint64_t num);
+    };
+
+    untrusted {
+        void ocall_print_string([in, string] const char *str);
+        void **ocall_enc_untrusted_allocate_buffers(uint64_t count,
+        uint64_t size);
+        void ocall_untrusted_local_free([user_check] void *ptr);
+        uint32_t ocall_recv([out, count = len_in] uint32_t * buf, uint32_t len_in);
+        uint32_t ocall_send([in, count = len_out] uint32_t * buf, uint32_t len_out);
+        void *ocall_untrusted_local_alloc(uint64_t size);
+        
+        void ocall_modify_pointer([user_check] uint64_t ** buf);
+    };
+
+};

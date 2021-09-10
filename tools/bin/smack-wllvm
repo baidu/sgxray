@@ -1,0 +1,3 @@
+#!/bin/sh
+
+wllvm "$@" -g -O0 -Xclang -disable-O0-optnone

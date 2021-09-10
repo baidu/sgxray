@@ -1,0 +1,121 @@
+samples:
+  - bc_file: enclave.so.bc
+    entry_point: ecall_test_allocate_trusted_buffer_ok
+    expected_result: verified
+  - bc_file: enclave.so.bc
+    entry_point: ecall_test_input_union1_ok
+    expected_result: verified
+  - bc_file: enclave.so.bc
+    entry_point: ecall_test_input_union1_error
+    expected_result: error
+  - bc_file: enclave.so.bc
+    entry_point: ecall_test_input_struct1_ok
+    expected_result: verified
+  - bc_file: enclave.so.bc
+    entry_point: ecall_test_input_struct1_error
+    expected_result: error
+  - bc_file: enclave.so.bc
+    entry_point: ecall_check_serialize_ok
+    expected_result: verified
+  - bc_file: enclave.so.bc
+    entry_point: ecall_check_serialize_error
+    expected_result: error
+  - bc_file: enclave.so.bc
+    entry_point: ecall_check_function_id_ok
+    expected_result: verified
+  - bc_file: enclave.so.bc
+    entry_point: ecall_check_function_id_error
+    expected_result: error
+  - bc_file: enclave.so.bc
+    entry_point: ecall_test_allocate_buffers_error
+    expected_result: error
+  - bc_file: enclave.so.bc
+    entry_point: ecall_test_allocate_buffers_ok
+    expected_result: verified
+  - bc_file: enclave.so.bc
+    entry_point: ecall_test_echo_error
+    expected_result: error
+  - bc_file: enclave.so.bc
+    entry_point: ecall_test_echo_ok
+    expected_result: verified
+  - bc_file: enclave.so.bc
+    entry_point: ecall_test_malloc1_error
+    expected_result: error
+  - bc_file: enclave.so.bc
+    entry_point: ecall_test_malloc2_error
+    expected_result: error
+  - bc_file: enclave.so.bc
+    entry_point: ecall_test_malloc3_error
+    expected_result: error
+  - bc_file: enclave.so.bc
+    entry_point: ecall_test_malloc4_ok
+    expected_result: verified
+  - bc_file: enclave.so.bc
+    entry_point: ecall_test_malloc5_error
+    # we have a false positive here because of insufficient loop unrolling
+    expected_result: unknown
+  - bc_file: enclave.so.bc
+    entry_point: ecall_test_malloc6_ok
+    expected_result: verified
+  - bc_file: enclave.so.bc
+    entry_point: ecall_test_malloc7_error
+    # we have a false positive here probably because of weird behaviors related
+    # to unrolling nested loops.
+    expected_result: unknown
+  - bc_file: enclave.so.bc
+    entry_point: ecall_test_malloc8_error
+    expected_result: error
+  - bc_file: enclave.so.bc
+    entry_point: ecall_test_malloc9_error
+    expected_result: error
+  - bc_file: enclave.so.bc
+    entry_point: ecall_copy_information_error
+    expected_result: error
+  - bc_file: enclave.so.bc
+    entry_point: ecall_copy_information_ok
+    expected_result: verified
+  - bc_file: enclave.so.bc
+    entry_point: ecall_copy_information_in_error
+    expected_result: error
+  - bc_file: enclave.so.bc
+    entry_point: ecall_copy_information_in_ok
+    expected_result: verified
+  - bc_file: enclave.so.bc
+    entry_point: ecall_check_usercheck1_error
+    expected_result: error
+  - bc_file: enclave.so.bc
+    entry_point: ecall_check_usercheck1_ok
+    expected_result: verified
+  - bc_file: enclave.so.bc
+    entry_point: ecall_check_usercheck_error
+    expected_result: error
+  - bc_file: enclave.so.bc
+    entry_point: ecall_check_usercheck_ok
+    expected_result: verified
+  - bc_file: enclave.so.bc
+    entry_point: ecall_copy_information_global_error
+    expected_result: error
+  - bc_file: enclave.so.bc
+    entry_point: ecall_copy_information_global_ok
+    expected_result: verified
+  - bc_file: enclave.so.bc
+    entry_point: ecall_copy_information_heap_error
+    expected_result: error
+  - bc_file: enclave.so.bc
+    entry_point: ecall_copy_information_heap_ok
+    expected_result: verified
+  - bc_file: enclave.so.bc
+    entry_point: ecall_null_pointer_derefence_error
+    # we have a false positive here because 1. malloc cannot return NULL
+    # 2. null-checks are not enabled
+    expected_result: error
+  - bc_file: enclave.so.bc
+    entry_point: ecall_null_pointer_derefence_ok
+    expected_result: verified
+  - bc_file: enclave.so.bc
+    entry_point: ecall_test_validate_pointer_error
+    expected_result: error
+  - bc_file: enclave.so.bc
+    entry_point: ecall_test_pointers_in_buffers_error
+    expected_result: error
+
